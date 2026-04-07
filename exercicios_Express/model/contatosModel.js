@@ -15,42 +15,27 @@ export function adicionarContatos(nome, telefone, email){
     return novoContato
 }
 
-//CRIAR VERIFICAÇÃO DE INFORMAÇÕES
 export function atualizarContatos(id, dados){
     const resultId = contatos.find(cont => cont.id == id)
-    if(dados.nome){
+
+    if (!resultId) {
+        return null
+    }
+
+    if (dados.nome !== undefined){
         resultId.nome = dados.nome
     }
-    if(dados.telefone){
+
+    if (dados.telefone !== undefined){
         resultId.telefone = dados.telefone
     }
-    if(dados.email){
+
+    if (dados.email !== undefined){
         resultId.email = dados.email
     }
+
     return resultId
 }
-
-// export function atualizarContatos(id, dados){
-//     const resultId = contatos.find(cont => cont.id == id)
-
-//     if (!resultId) {
-//         return null
-//     }
-
-//     if (dados.nome !== undefined){
-//         resultId.nome = dados.nome
-//     }
-
-//     if (dados.telefone !== undefined){
-//         resultId.telefone = dados.telefone
-//     }
-
-//     if (dados.email !== undefined){
-//         resultId.email = dados.email
-//     }
-
-//     return resultId
-// }
 
 export function deletarContatos(id){
     const resultId = contatos.findIndex(cont => cont.id == id)
